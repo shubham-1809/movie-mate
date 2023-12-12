@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
 
 mongoose
   .connect(
-    `mongodb+srv://shubhamchouksey1809:${process.env.MONGODB_PASSWORD}@cluster0.0jzw0zf.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://shubhamchouksey1809:9bjN0rvbJpswMlht@cluster0.0jzw0zf.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() =>
     app.listen(process.env.PORT, () =>
