@@ -6,7 +6,7 @@ import adminRouter from "./routes/admin-routes.js";
 import movieRouter from "./routes/movie-routes.js";
 import bookingsRouter from "./routes/booking-routes.js";
 import cors from "cors";
-const path = require("path");
+import path from "path";
 
 dotenv.config();
 const app = express();
