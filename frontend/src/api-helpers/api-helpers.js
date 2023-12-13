@@ -26,7 +26,7 @@ export const sendUserAuthRequest = async (data, signup) => {
   const resData = await res.data;
   return resData;
 };
-/*
+
 export const sendAdminAuthRequest = async (data) => {
   const res = await axios
     .post("/admin/login", {
@@ -41,8 +41,8 @@ export const sendAdminAuthRequest = async (data) => {
 
   const resData = await res.data;
   return resData;
-};*/
-
+};
+/*
 export const sendAdminAuthRequest = async (data) => {
   try {
     const res = await axios.post("/admin/login", {
@@ -71,7 +71,7 @@ export const sendAdminAuthRequest = async (data) => {
     // You might want to return null, throw an error, or handle it in another way
     //return null;
   }
-};
+};*/
 
 
 export const getMovieDetails = async (id) => {
