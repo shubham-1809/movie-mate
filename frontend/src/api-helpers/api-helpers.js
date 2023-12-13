@@ -26,7 +26,7 @@ export const sendUserAuthRequest = async (data, signup) => {
   const resData = await res.data;
   return resData;
 };
-
+/*
 export const sendAdminAuthRequest = async (data) => {
   const res = await axios
     .post("/admin/login", {
@@ -41,7 +41,38 @@ export const sendAdminAuthRequest = async (data) => {
 
   const resData = await res.data;
   return resData;
+};*/
+
+export const sendAdminAuthRequest = async (data) => {
+  try {
+    const res = await axios.post("/admin/login", {
+      email: data.email,
+      password: data.password,
+    });
+
+    // Check if the response status is not 200
+    if (res.status !== 200) {
+      console.log("Unexpected Error:", res.status);
+      //return null; // or handle the error in an appropriate way
+    }
+
+    // Assuming you are expecting JSON data in the response
+    const resData = await res.data;
+    return resData;
+  } catch (error) {
+    // Handle any errors that occurred during the request
+    console.error('Error:', error.message);
+
+    // If the error has a response, log the status
+    if (error.response && error.response.status) {
+      console.error('Response status:', error.response.status);
+    }
+
+    // You might want to return null, throw an error, or handle it in another way
+    //return null;
+  }
 };
+
 
 export const getMovieDetails = async (id) => {
   const res = await axios.get(`/movie/${id}`).catch((err) => console.log(err));
