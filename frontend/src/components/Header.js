@@ -46,11 +46,13 @@ const Header = () => {
           </IconButton>
         </Box>*/}
 
+        <Box width={"20%"}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             MovieMate
           </Link>
         </Typography>
+        </Box>
 
         <Box width={"30%"} margin="auto">
           <Autocomplete
