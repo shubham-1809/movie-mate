@@ -39,12 +39,12 @@ const Header = () => {
   };
   return (
     <AppBar position="sticky" sx={{ bgcolor: "#2b2d42" }}>
-      {/*<Toolbar>
-        <Box width={"20%"}>
+      <Toolbar>
+        {/*<Box width={"20%"}>
           <IconButton LinkComponent={Link} to="/">
             <MovieIcon />
           </IconButton>
-  </Box>*/}
+        </Box>*/}
 
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
