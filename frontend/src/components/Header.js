@@ -44,14 +44,21 @@ const Header = () => {
           <IconButton LinkComponent={Link} to="/">
             <MovieIcon />
           </IconButton>
-        </Box>*/}
+        </Box>
 
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             MovieMate
           </Link>
-        </Typography>
+        </Typography>*/}
 
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <Typography variant="h6" component="div" sx={{ color: "black" }}>
+            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+              MovieMate
+            </Link>
+          </Typography>
+        </Box>
 
         <Box width={"30%"} margin="auto" sx={{ maxWidth: "400px" }}>
           <Autocomplete
