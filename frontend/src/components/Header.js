@@ -48,11 +48,31 @@ const Header = () => {
 
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-          MovieMate
+            MovieMate
           </Link>
         </Typography>
 
-        <Box width={"30%"} margin="auto">
+        {/*<Box width={"30%"} margin="auto">
+          <Autocomplete
+            onChange={handleChange}
+            freeSolo
+            options={movies && movies.map((option) => option.title)}
+            renderInput={(params) => (
+              <TextField
+                sx={{ input: { color: "white" } }}
+                variant="standard"
+                {...params}
+                placeholder="Search Across Multiple Movies"
+              />
+            )}
+          />
+            </Box>*/}
+
+        <Box
+          width={"30%"}
+          margin="auto"
+          sx={{ textAlign: 'center', flexGrow: 1 }}  {/* Added textAlign and flexGrow properties */}
+        >
           <Autocomplete
             onChange={handleChange}
             freeSolo
@@ -67,6 +87,8 @@ const Header = () => {
             )}
           />
         </Box>
+
+
         <Box display={"flex"}>
           <Tabs
             textColor="inherit"
