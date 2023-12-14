@@ -60,7 +60,7 @@ const Header = () => {
           </Typography>
         </Box>
 
-        <Box width={"30%"} margin="auto" sx={{ maxWidth: "400px" }}>
+        <Box sx={{ flex: 1, marginLeft: 'auto', marginRight: 'auto', maxWidth: "400px" }}>
           <Autocomplete
             onChange={handleChange}
             freeSolo
