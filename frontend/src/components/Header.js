@@ -37,13 +37,20 @@ const Header = () => {
     }
   };
   return (
-    <AppBar position="sticky" sx={{ bgcolor: "#2b2d42" }}>
+    <AppBar position="sticky" sx={{ bgcolor: "#FFFFFF" }}>
       <Toolbar>
         <Box width={"20%"}>
           <IconButton LinkComponent={Link} to="/">
             <MovieIcon />
           </IconButton>
         </Box>
+
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "white", marginLeft: 2 }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            MovieMate
+          </Link>
+        </Typography>
+
         <Box width={"30%"} margin="auto">
           <Autocomplete
             onChange={handleChange}
@@ -54,7 +61,7 @@ const Header = () => {
                 sx={{ input: { color: "white" } }}
                 variant="standard"
                 {...params}
-                placeholder="Search Acroos Multiple Movies"
+                placeholder="Search Across Multiple Movies"
               />
             )}
           />
@@ -70,7 +77,7 @@ const Header = () => {
             {!isAdminLoggedIn && !isUserLoggedIn && (
               <>
                 <Tab label="Admin" LinkComponent={Link} to="/admin" />
-                <Tab label="Auth" LinkComponent={Link} to="/auth" />
+                <Tab label="User" LinkComponent={Link} to="/auth" />
               </>
             )}
             {isUserLoggedIn && (
