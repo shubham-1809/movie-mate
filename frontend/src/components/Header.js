@@ -52,7 +52,7 @@ const Header = () => {
           </Link>
         </Typography>
 
-        <Box flexGrow={1} width={"30%"} margin="0 10px"  sx={{ maxWidth: "400px" }}>
+        <Box width={"30%"} margin="auto">
           <Autocomplete
             onChange={handleChange}
             freeSolo
