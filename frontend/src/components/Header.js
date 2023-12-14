@@ -39,21 +39,21 @@ const Header = () => {
   };
   return (
     <AppBar position="sticky" sx={{ bgcolor: "#2b2d42" }}>
-      <Toolbar>
+      {/*<Toolbar>
         <Box width={"20%"}>
           <IconButton LinkComponent={Link} to="/">
             <MovieIcon />
           </IconButton>
-        </Box>
+  </Box>*/}
 
-        {/*<Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             MovieMate
           </Link>
-  </Typography>*/}
+        </Typography>
 
 
-        <Box width={"30%"} margin="auto" >
+        <Box width={"30%"} margin="auto" sx={{ maxWidth: "400px" }}>
           <Autocomplete
             onChange={handleChange}
             freeSolo
