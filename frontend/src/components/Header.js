@@ -40,19 +40,13 @@ const Header = () => {
   return (
     <AppBar position="sticky" sx={{ bgcolor: "#2b2d42" }}>
       <Toolbar>
-        {/*<Box width={"20%"}>
+        <Box width={"20%"}>
           <IconButton LinkComponent={Link} to="/">
             <MovieIcon />
           </IconButton>
-          </Box>*/}
+          </Box>
 
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black" }}>
-          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
-            MovieMate
-          </Link>
-        </Typography>
-
-        <Box width={"30%"} margin="auto" sx={{ textAlign: 'center', flexGrow: 1 }}>
+        <Box width={"30%"} margin="auto">
           <Autocomplete
             onChange={handleChange}
             freeSolo
@@ -68,7 +62,6 @@ const Header = () => {
           />
         </Box>
 
-
         <Box display={"flex"}>
           <Tabs
             textColor="inherit"
@@ -76,7 +69,7 @@ const Header = () => {
             value={value}
             onChange={(e, val) => setValue(val)}
           >
-            <Tab LinkComponent={Link} to="/movies" label="Movies" />
+          <Tab LinkComponent={Link} to="/movies" label="Movies" />
             {!isAdminLoggedIn && !isUserLoggedIn && (
               <>
                 <Tab label="Admin" LinkComponent={Link} to="/admin" />
