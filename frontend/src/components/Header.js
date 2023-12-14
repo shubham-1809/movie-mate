@@ -52,27 +52,7 @@ const Header = () => {
           </Link>
         </Typography>
 
-        {/*<Box width={"30%"} margin="auto">
-          <Autocomplete
-            onChange={handleChange}
-            freeSolo
-            options={movies && movies.map((option) => option.title)}
-            renderInput={(params) => (
-              <TextField
-                sx={{ input: { color: "white" } }}
-                variant="standard"
-                {...params}
-                placeholder="Search Across Multiple Movies"
-              />
-            )}
-          />
-            </Box>*/}
-
-        <Box
-          width={"30%"}
-          margin="auto"
-          sx={{ textAlign: 'center', flexGrow: 1 }}  {/* Added textAlign and flexGrow properties */}
-        >
+        <Box width={"30%"} margin="auto" sx={{ textAlign: 'center', flexGrow: 1 }}>
           <Autocomplete
             onChange={handleChange}
             freeSolo
