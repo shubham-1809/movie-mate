@@ -9,6 +9,7 @@ import {
   Toolbar,
 } from "@mui/material";
 import MovieIcon from "@mui/icons-material/Movie";
+import Typography from "@mui/material";
 import { Box } from "@mui/system";
 import { getAllMovies } from "../api-helpers/api-helpers";
 import { Link, useNavigate } from "react-router-dom";
