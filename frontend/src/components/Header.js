@@ -46,7 +46,7 @@ const Header = () => {
           </IconButton>
         </Box>
 
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "white", marginLeft: 2 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: "black", marginLeft: 0 }}>
           <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             MovieMate
           </Link>
