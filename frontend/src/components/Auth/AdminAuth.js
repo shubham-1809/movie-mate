@@ -13,11 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import { useToasts } from "react-toast-notifications";   // added
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
-  const { addToast } = useToasts(); // added
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
@@ -41,16 +39,26 @@ const AdminAuth = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate email and password
+    if (!inputs.email || !inputs.password) {
+      window.alert("Please enter both email and password.");
+      return;
+    }
+
+    // Validate password length
+    if (inputs.password.length < 6) {
+      window.alert("Password must be at least 6 characters long.");
+      return;
+    }
+
     console.log(inputs);
     adminLogin(inputs)
       .then(onRequestSent)
-      // added catch function below
       .catch((err) => {
-        addToast("Login failed. Please check your credentials.", {
-          appearance: "error",
-          autoDismiss: true,
-        });
+        // Handle login error
         console.error(err);
+        window.alert("Wrong email or password. Please try again.");
       });
       //.catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
