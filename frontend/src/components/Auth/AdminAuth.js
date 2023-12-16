@@ -19,6 +19,7 @@ const AdminAuth = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
+  const [notification, setNotification] = useState(null);   // added
   const onClose = () => {
     setOpen(false);
     navigate("/");
@@ -37,18 +38,27 @@ const AdminAuth = () => {
     setOpen(false);
     navigate("/");
   };
+
+  // Function to display a notification
+  const showNotification = (message) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000); // Hide notification after 3 seconds
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validate email and password
     if (!inputs.email || !inputs.password) {
-      window.alert("Please enter both email and password.");
+      showNotification("Please enter both email and password.");
       return;
     }
 
     // Validate password length
     if (inputs.password.length < 6) {
-      window.alert("Password must be at least 6 characters long.");
+      showNotification("Password must be at least 6 characters long.");
       return;
     }
 
@@ -58,7 +68,7 @@ const AdminAuth = () => {
       .catch((err) => {
         // Handle login error
         console.error(err);
-        window.alert("Wrong email or password. Please try again.");
+        showNotification("Wrong email or password. Please try again.");
       });
       //.catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
@@ -74,6 +84,14 @@ const AdminAuth = () => {
       <Typography variant="h4" textAlign={"center"}>
         {"Login"}
       </Typography>
+
+      {/* Display the notification div */}
+      {notification && (
+        <div style={{ color: "red", textAlign: "center", marginBottom: "10px" }}>
+          {notification}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <Box
           alignItems={"center"}
