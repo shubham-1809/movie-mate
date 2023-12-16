@@ -13,12 +13,10 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import { useSnackbar } from "notistack"; // Import useSnackbar from notistack library
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar(); // Destructure enqueueSnackbar from useSnackbar
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
   const onClose = () => {
@@ -41,29 +39,10 @@ const AdminAuth = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validate email and password
-    if (!inputs.email || !inputs.password) {
-      enqueueSnackbar("Email and password are required", { variant: "error" });
-      return;
-    }
-
-    // Validate password length
-    if (inputs.password.length < 6) {
-      enqueueSnackbar("Password must be at least 6 characters long", {
-        variant: "error",
-      });
-      return;
-    }
-
     console.log(inputs);
     adminLogin(inputs)
       .then(onRequestSent)
-      .catch((err) => {
-        console.log(err);
-        enqueueSnackbar("Invalid email or password", { variant: "error" });
-      });
-      //.catch((err) => console.log(err));
+      .catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
 
