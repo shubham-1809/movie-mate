@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import Notification from "./notification"; // Adjust the path based on your project structure
 
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
@@ -21,16 +20,6 @@ const AdminAuth = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
-
-  const [notification, setNotification] = useState(null);
-
-  const showNotification = (message) => {
-    setNotification(message);
-  };
-
-  const handleCloseNotification = () => {
-    setNotification(null);
-  };
 
   const onClose = () => {
     setOpen(false);
@@ -54,27 +43,10 @@ const AdminAuth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate email and password
-    if (!inputs.email || !inputs.password) {
-      showNotification("Please enter both email and password.");
-      return;
-    }
-
-    // Validate password length
-    if (inputs.password.length < 6) {
-      showNotification("Password must be at least 6 characters long.");
-      return;
-    }
-
     console.log(inputs);
     adminLogin(inputs)
       .then(onRequestSent)
-      .catch((err) => {
-        // Handle login error
-        console.error(err);
-        showNotification("Wrong email or password. Please try again.");
-      });
-      //.catch((err) => console.log(err));
+      .catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
 
@@ -88,10 +60,6 @@ const AdminAuth = () => {
       <Typography variant="h4" textAlign={"center"}>
         {"Login"}
       </Typography>
-
-      {notification && (
-        <Notification message={notification} onClose={handleCloseNotification} />
-      )}
 
       <form onSubmit={handleSubmit}>
         <Box
