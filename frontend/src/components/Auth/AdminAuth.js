@@ -13,9 +13,11 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
+import { useToasts } from "react-toast-notifications";   // added
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
+  const { addToast } = useToasts(); // added
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
@@ -42,7 +44,15 @@ const AdminAuth = () => {
     console.log(inputs);
     adminLogin(inputs)
       .then(onRequestSent)
-      .catch((err) => console.log(err));
+      // added catch function below
+      .catch((err) => {
+        addToast("Login failed. Please check your credentials.", {
+          appearance: "error",
+          autoDismiss: true,
+        });
+        console.error(err);
+      });
+      //.catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
 
