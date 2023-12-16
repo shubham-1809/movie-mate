@@ -13,13 +13,25 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
+import Notification from "./notification"; // Adjust the path based on your project structure
+
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
-  const [notification, setNotification] = useState(null);   // added
+
+  const [notification, setNotification] = useState(null);
+
+  const showNotification = (message) => {
+    setNotification(message);
+  };
+
+  const handleCloseNotification = () => {
+    setNotification(null);
+  };
+
   const onClose = () => {
     setOpen(false);
     navigate("/");
@@ -37,14 +49,6 @@ const AdminAuth = () => {
     dispatch(adminActions.login());
     setOpen(false);
     navigate("/");
-  };
-
-  // Function to display a notification
-  const showNotification = (message) => {
-    setNotification(message);
-    setTimeout(() => {
-      setNotification(null);
-    }, 3000); // Hide notification after 3 seconds
   };
 
   const handleSubmit = (e) => {
@@ -85,11 +89,8 @@ const AdminAuth = () => {
         {"Login"}
       </Typography>
 
-      {/* Display the notification div */}
       {notification && (
-        <div style={{ color: "red", textAlign: "center", marginBottom: "10px" }}>
-          {notification}
-        </div>
+        <Notification message={notification} onClose={handleCloseNotification} />
       )}
 
       <form onSubmit={handleSubmit}>
