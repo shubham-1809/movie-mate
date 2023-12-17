@@ -37,7 +37,7 @@ const AdminAuth = () => {
     dispatch(adminActions.login());
     setOpen(false);
     navigate("/");
-    
+    alert("Login Successful");
   };
 
   const handleSubmit = (e) => {
