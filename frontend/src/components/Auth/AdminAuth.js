@@ -37,37 +37,14 @@ const AdminAuth = () => {
     dispatch(adminActions.login());
     setOpen(false);
     navigate("/");
-
-     // Show success notification
-     toast.success("Login successful!", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 3000,
-    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-
-    if (!inputs.email || !inputs.password) {
-      // Use toast.error directly here
-      toast.error("Email and password cannot be empty");
-      return;
-    }
-
-    if (inputs.password.length < 6) {
-      toast.error("Password length should be at least 6 characters");
-      return;
-    }
-
     adminLogin(inputs)
       .then(onRequestSent)
-      .catch((err) => {
-        // Show error notification for incorrect password or other errors
-        toast.error("Incorrect email or password");
-        console.log(err);
-      });
-      //.catch((err) => console.log(err));
+      .catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
 
@@ -123,7 +100,6 @@ const AdminAuth = () => {
           </Button>
         </Box>
       </form>
-      <ToastContainer />
     </Dialog>
   );
 };

@@ -11,8 +11,6 @@ import Movies from "./components/Movies/Movies";
 import AdminProfile from "./profile/AdminProfile";
 import UserProfile from "./profile/UserProfile";
 import { adminActions, userActions } from "./store";
-import { ToastContainer } from 'react-toastify';   //added
-import 'react-toastify/dist/ReactToastify.css';    //added
 
 function App() {
   const dispatch = useDispatch();
@@ -57,8 +55,6 @@ function App() {
           )}
         </Routes>
       </section>
-      {/* Place the ToastContainer at the root level */}
-      <ToastContainer />
     </div>
   );
 }
