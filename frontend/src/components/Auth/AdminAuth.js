@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-
+import { ToastContainer, toast } from 'react-toastify';   // added
+import 'react-toastify/dist/ReactToastify.css';           // added
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
@@ -38,15 +39,38 @@ const AdminAuth = () => {
     dispatch(adminActions.login());
     setOpen(false);
     navigate("/");
+
+     // Show success notification
+     toast.success("Login successful!", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(inputs);
+
+    // Check for empty email or password
+    if (!inputs.email || !inputs.password) {
+      toast.error("Email and password cannot be empty");
+      return;
+    }
+
+    // Check for password length less than 6
+    if (inputs.password.length < 6) {
+      toast.error("Password length should be at least 6 characters");
+      return;
+    }
+
     adminLogin(inputs)
       .then(onRequestSent)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // Show error notification for incorrect password or other errors
+        toast.error("Incorrect email or password");
+        console.log(err);
+      });
+      //.catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
 
@@ -102,6 +126,8 @@ const AdminAuth = () => {
           </Button>
         </Box>
       </form>
+      {/* ToastContainer should be placed at the top level of your app */}
+      <ToastContainer />
     </Dialog>
   );
 };
