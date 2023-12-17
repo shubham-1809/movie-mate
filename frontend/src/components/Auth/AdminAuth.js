@@ -13,8 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import { ToastContainer, toast } from 'react-toastify';   // added
-import 'react-toastify/dist/ReactToastify.css';           // added
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
@@ -51,13 +49,12 @@ const AdminAuth = () => {
     e.preventDefault();
     console.log(inputs);
 
-    // Check for empty email or password
     if (!inputs.email || !inputs.password) {
+      // Use toast.error directly here
       toast.error("Email and password cannot be empty");
       return;
     }
 
-    // Check for password length less than 6
     if (inputs.password.length < 6) {
       toast.error("Password length should be at least 6 characters");
       return;
@@ -126,7 +123,6 @@ const AdminAuth = () => {
           </Button>
         </Box>
       </form>
-      {/* ToastContainer should be placed at the top level of your app */}
       <ToastContainer />
     </Dialog>
   );
