@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { ChakraProvider } from "@chakra-ui/react";    // added
 import axios from "axios";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -11,12 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 axios.defaults.baseURL = "https://project1-ie71.onrender.com";    // before deployment -> http://localhost:5000
 root.render(
   <React.StrictMode>
-    <ChakraProvider>    // added
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </ChakraProvider>   //added
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );

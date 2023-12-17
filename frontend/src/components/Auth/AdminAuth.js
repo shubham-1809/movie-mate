@@ -13,14 +13,12 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import { useToast } from "@chakra-ui/react";   //added
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [inputs, setInputs] = useState({ email: "", password: "" });
-  const toast = useToast();    // added
 
   const onClose = () => {
     setOpen(false);
@@ -45,16 +43,6 @@ const AdminAuth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    if (!email || !password) {
-      toast({
-        title: "Please Fill all the Feilds",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      return;
-    }
     adminLogin(inputs)
       .then(onRequestSent)
       .catch((err) => console.log(err));
