@@ -15,8 +15,9 @@ const HomePage = () => {
     <Box width={"100%"} height="100%" margin="auto" marginTop={2}>
       <Box margin={"auto"} width="80%" height={"40vh"} padding={2}>
         <img
-          src="https://i.ytimg.com/vi/bweRG6WueuM/maxresdefault.jpg"
-          alt="Brahmastra"
+          //src="https://i.ytimg.com/vi/bweRG6WueuM/maxresdefault.jpg"
+          src="./HomePage/poster.jpg"
+          alt="Dunki"
           width={"100%"}
           height={"100%"}
         />
@@ -36,7 +37,7 @@ const HomePage = () => {
       >
         {movies &&
           movies
-            .slice(0, 4)
+            .slice(0, 6)
             .map((movie, index) => (
               <MovieItem
                 id={movie.id}
