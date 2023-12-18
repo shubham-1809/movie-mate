@@ -1,4 +1,3 @@
-'use client'
 import {
   Box,
   Button,
@@ -14,8 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { adminLogin, sendAuthRequest } from "../../helpers/api-helpers";
 import { useDispatch } from "react-redux";
 import { adminActions } from "../../store/admin-slice";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+
 const labelSx = { marginRight: "auto", mt: 1, mb: 1 };
 const AdminAuth = () => {
   const dispatch = useDispatch();
@@ -50,8 +48,6 @@ const AdminAuth = () => {
       .catch((err) => console.log(err));
     setInputs({ name: "", email: "", password: "" });
   };
-
-  const notify = () => toast("Wow so easy!");
 
   return (
     <Dialog PaperProps={{ style: { borderRadius: 20 } }} open={open}>
@@ -100,11 +96,9 @@ const AdminAuth = () => {
             type="submit"
             fullWidth
             variant="contained"
-            onClick={notify}
           >
             {"Login"}
           </Button>
-          <ToastContainer />
         </Box>
       </form>
     </Dialog>
